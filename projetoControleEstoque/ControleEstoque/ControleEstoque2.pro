@@ -17,16 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    registerprodut.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    registerprodut.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    registerprodut.ui
 
 TRANSLATIONS += \
-    ControleEstoque_pt_BR.ts
+    ControleEstoque2_pt_BR.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

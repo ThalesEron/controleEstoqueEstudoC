@@ -16,8 +16,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_confirmRegisterButton_clicked();
-
     void on_pushButton_clicked();
 
 private:
