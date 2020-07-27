@@ -2,6 +2,9 @@
 #define REGISTERPRODUT_H
 
 #include <QDialog>
+#include <QSqlDatabase>
+#include <QtSql>
+#include <QMessageBox>
 
 namespace Ui {
 class registerprodut;

@@ -1,6 +1,6 @@
 #include "registerprodut.h"
 #include "ui_registerprodut.h"
-#include <QMessageBox>
+
 
 registerprodut::registerprodut(QWidget *parent) :
     QDialog(parent),
@@ -31,9 +31,21 @@ void registerprodut::on_confirmRegisterButton_clicked()
         return;
     }
 
+    //Conexão banco de dados
+        QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+        db.setHostName("localhost");
+        db.setUserName("root");
+        db.setPassword("");
+        db.setDatabaseName("qt1");
 
     //mostrando os textos digitados
-    QMessageBox::information(this, "Registros Informados:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"Fornecedor: "+fornecedor+"\nPeso: "+peso+".");
+        if (db.open()) {
+            QMessageBox::information(this, "Registros Informados:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"Fornecedor: "+fornecedor+"\nPeso: "+peso+".");
+
+        } else {
+            QMessageBox::information(this, "Registros Informados:", "Banco de dados não está funcionando");
+
+        }
 
 }
 
