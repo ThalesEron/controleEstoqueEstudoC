@@ -1,5 +1,6 @@
 #include "registerprodut.h"
 #include "ui_registerprodut.h"
+#include <iostream>
 
 
 registerprodut::registerprodut(QWidget *parent) :
@@ -24,6 +25,12 @@ void registerprodut::on_confirmRegisterButton_clicked()
     QString peso = ui->lineEditPeso->text();
 
 
+     bool ok;
+     int quant = quantidade.toInt(&ok);
+    if(!ok) {
+        QMessageBox::information(this, "Registros Informados:", "Digite um valor valido no campo de quantidade.");
+        return;
+    }
 
     //verificar se tem algum campo vazio
     if (nome == "" || quantidade == "" || tipo == "" || fornecedor == "" || peso == "") {
@@ -48,7 +55,7 @@ void registerprodut::on_confirmRegisterButton_clicked()
             qry.prepare("INSERT INTO produto (name, quantidade, tipo, fornecedor, peso)" "VALUES (:nome, :quantidade, :tipo, :fornecedor, :peso)");
 
             qry.bindValue(":nome", nome);
-            qry.bindValue(":quantidade", quantidade);
+            qry.bindValue(":quantidade", quant);
             qry.bindValue(":tipo", tipo);
             qry.bindValue(":fornecedor", fornecedor);
             qry.bindValue(":peso", peso);

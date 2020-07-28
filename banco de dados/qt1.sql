@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Jul-2020 às 21:49
+-- Tempo de geração: 28-Jul-2020 às 23:16
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `produto` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `tipo` varchar(30) DEFAULT NULL,
-  `fornecedor` varchar(30) DEFAULT NULL,
-  `peso` int(11) DEFAULT NULL
+  `name` varchar(30) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `tipo` varchar(30) NOT NULL,
+  `fornecedor` varchar(30) NOT NULL,
+  `peso` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54,7 +54,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
