@@ -36,14 +36,35 @@ void registerprodut::on_confirmRegisterButton_clicked()
         db.setHostName("localhost");
         db.setUserName("root");
         db.setPassword("");
-        db.setDatabaseName("qt1");
+        db.setDatabaseName("qt1"); //lembrar de importar o banco de dados no xampp chamado qt1
 
-    //mostrando os textos digitados
+    //verificando se está online
         if (db.open()) {
-            QMessageBox::information(this, "Registros Informados:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"Fornecedor: "+fornecedor+"\nPeso: "+peso+".");
+
+
+        //registrando os dados no banco de dados
+            QSqlQuery qry;
+
+            qry.prepare("INSERT INTO produto (name, quantidade, tipo, fornecedor, peso)" "VALUES (:nome, :quantidade, :tipo, :fornecedor, :peso)");
+
+            qry.bindValue(":nome", nome);
+            qry.bindValue(":quantidade", quantidade);
+            qry.bindValue(":tipo", tipo);
+            qry.bindValue(":fornecedor", fornecedor);
+            qry.bindValue(":peso", peso);
+
+             if (qry.exec()) {
+                 //confirmando ao usuário os dados registrados e que foi realizado com sucesso
+                 QMessageBox::information(this, "Registro Realizado:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"\nFornecedor: "+fornecedor+"\nPeso: "+peso+".");
+
+             } else {
+                 //mensagem de erro caso tenha dado algum erro nos dados informados
+                 QMessageBox::information(this, "Registro Não Realizado:", "Algum dado não foi informado corretamente");
+             }
 
         } else {
-            QMessageBox::information(this, "Registros Informados:", "Banco de dados não está funcionando");
+            //mensagem de erro caso o banco de dados não esteja conectando
+            QMessageBox::information(this, "Not Connect:", "Banco de dados não está funcionando");
 
         }
 
