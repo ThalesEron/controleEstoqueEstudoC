@@ -23,6 +23,7 @@ void registerprodut::on_confirmRegisterButton_clicked()
     QString tipo = ui->lineEditType->text();
     QString fornecedor = ui->lineEditForne->text();
     QString peso = ui->lineEditPeso->text();
+    QString tipoPeso = ui->comboBoxPeso->currentText();
 
 
      bool ok;
@@ -58,11 +59,11 @@ void registerprodut::on_confirmRegisterButton_clicked()
             qry.bindValue(":quantidade", quant);
             qry.bindValue(":tipo", tipo);
             qry.bindValue(":fornecedor", fornecedor);
-            qry.bindValue(":peso", peso);
+            qry.bindValue(":peso", peso+tipoPeso);
 
              if (qry.exec()) {
                  //confirmando ao usuário os dados registrados e que foi realizado com sucesso
-                 QMessageBox::information(this, "Registro Realizado:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"\nFornecedor: "+fornecedor+"\nPeso: "+peso+".");
+                 QMessageBox::information(this, "Registro Realizado:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"\nFornecedor: "+fornecedor+"\nPeso: "+peso+tipoPeso+".");
 
              } else {
                  //mensagem de erro caso tenha dado algum erro nos dados informados
