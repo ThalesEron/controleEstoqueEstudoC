@@ -146,7 +146,8 @@ void Fornecedor::on_buttonConfirmFor_clicked()
                      if (qry2.exec()) {
                          //confirmando ao usuário os dados registrados e que foi realizado com sucesso
                          QMessageBox::information(this, "Registro Realizado:", "Nome: "+nome+"\nCnpj: "+cnpj+"\nTelefone: "+telefone1+"\nEmail1: "+email1+"\nTelefone2: "+telefone2+"\nEmail2: "+email2);
-
+                           //após
+                         limparForne();
                      } else {
                          //mensagem de erro caso tenha dado algum erro nos dados informados
                          QMessageBox::information(this, "Registro Não Realizado:", "Algum dado na parte de endereço não foi informado corretamente");
@@ -177,3 +178,33 @@ void Fornecedor::on_buttonConfirmFor_clicked()
 
 
 }
+
+void Fornecedor::on_pushButtonLimparFor_clicked()
+{
+    //chamand método para limpar os campos
+limparForne();
+}
+
+
+
+void Fornecedor::limparForne() {
+
+    //limpando os campos digitados
+   ui->lineEditNomeFor->clear();
+   ui->lineEditCnpjFor->clear();
+   ui->lineEditTel1For->clear();
+   ui->lineEditEmail1For->clear();
+   ui->lineEditTel2For->clear();
+   ui->lineEditEmail2For->clear();
+   ui->lineEditRuaFor->clear();
+   ui->lineEditNumeroFor->clear();
+   ui->lineEditBairroFor->clear();
+   ui->lineEditCidadeFor->clear();
+   ui->lineEditEstadoFor->clear();
+   ui->lineEditPaisFor->clear();
+
+
+   //colocando o cursor no campo de texto de nome
+   ui->lineEditNomeFor->setFocus();
+
+        }

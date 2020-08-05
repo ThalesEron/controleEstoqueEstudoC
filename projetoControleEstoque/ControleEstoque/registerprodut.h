@@ -23,6 +23,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void limparProtudo();
+
 private:
     Ui::registerprodut *ui;
 };

@@ -65,6 +65,8 @@ void registerprodut::on_confirmRegisterButton_clicked()
                  //confirmando ao usuário os dados registrados e que foi realizado com sucesso
                  QMessageBox::information(this, "Registro Realizado:", "Nome: "+nome+"\nQuantidade: "+quantidade+"\nTipo: "+tipo+"\nFornecedor: "+fornecedor+"\nPeso: "+peso+tipoPeso+".");
 
+                 //chamando função para limpar os campos
+                 limparProtudo();
              } else {
                  //mensagem de erro caso tenha dado algum erro nos dados informados
                  QMessageBox::information(this, "Registro Não Realizado:", "Algum dado não foi informado corretamente");
@@ -79,6 +81,12 @@ void registerprodut::on_confirmRegisterButton_clicked()
 }
 
 void registerprodut::on_pushButton_clicked()
+{
+//chamando função para limpar os campos
+limparProtudo();
+}
+
+void registerprodut::limparProtudo()
 {
     //limpando os campos digitados
     ui->lineEditName->clear();

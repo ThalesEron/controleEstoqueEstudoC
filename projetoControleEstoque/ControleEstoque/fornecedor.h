@@ -21,6 +21,10 @@ public:
 private slots:
     void on_buttonConfirmFor_clicked();
 
+    void on_pushButtonLimparFor_clicked();
+
+    void limparForne();
+
 private:
     Ui::Fornecedor *ui;
 };
